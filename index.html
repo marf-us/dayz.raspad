@@ -23,7 +23,7 @@
     }
 
     .card {
-      max-width: 1000px;
+      max-width: 1200px;
       width: 100%;
       background: #161b22;
       border-radius: 40px;
@@ -45,7 +45,7 @@
 
     .header-banner {
       width: 100%;
-      max-height: 200px;
+      max-height: 300px;
       object-fit: cover;
       border-radius: 16px;
       margin-bottom: 16px;
@@ -63,8 +63,8 @@
     }
 
     .header-icon {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       object-fit: contain;
       border-radius: 12px;
       border: 1px solid #2f3a47;
@@ -74,7 +74,7 @@
     }
 
     .header-title {
-      font-size: 34px;
+      font-size: 38px;
       font-weight: 300;
       letter-spacing: 3px;
       color: #f0eae3;
@@ -421,10 +421,10 @@
     /* --- адаптив --- */
     @media (max-width: 640px) {
       .card { padding: 20px 16px; }
-      .header-title { font-size: 26px; }
+      .header-title { font-size: 28px; }
       .header-title span { font-size: 14px; margin-left: 6px; }
-      .header-icon { width: 44px; height: 44px; }
-      .header-banner { max-height: 120px; }
+      .header-icon { width: 50px; height: 50px; }
+      .header-banner { max-height: 150px; }
       .tabs { gap: 4px; }
       .tab-btn { padding: 8px 14px; font-size: 14px; }
       .tab-content { padding: 20px 14px; }
@@ -440,12 +440,12 @@
 <body>
 
 <div class="card">
-  <!-- ШАПКА (баннер на всю ширину, под ним логотип + название) -->
+  <!-- ШАПКА -->
   <header class="header">
-    <!-- Баннер на всю ширину -->
+    <!-- Баннер на всю ширину (увеличен) -->
     <img class="header-banner" src="https://i.imgur.com/LgE1Rg7.jpeg" alt="Баннер группировки Распад" />
     
-    <!-- Нижняя часть: логотип и название -->
+    <!-- Логотип и название по центру -->
     <div class="header-bottom">
       <img class="header-icon" src="https://i.imgur.com/FPRLXDg.png" alt="Логотип Raspad" />
       <div class="header-title">
