@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raspad || RSPD</title>
   <style>
-    /* --- Общий стиль (темная эстетика, как в LightBreath) --- */
+    /* --- Общий стиль (темная эстетика) --- */
     * {
       margin: 0;
       padding: 0;
@@ -29,9 +29,7 @@
       border-radius: 40px;
       box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8), 0 0 0 1px #2d3740 inset;
       padding: 32px 30px 40px;
-      transition: 0.2s;
       border: 1px solid #2f3a47;
-      margin: 0 auto;
     }
 
     /* --- Заголовок --- */
@@ -61,14 +59,12 @@
       font-weight: 400;
       padding: 4px 18px;
       border-radius: 40px;
-      letter-spacing: 0.5px;
       color: #b7c7d9;
       border: 1px solid #3f4b59;
     }
 
     .header h1 .emoji-gun {
       font-size: 28px;
-      filter: drop-shadow(0 0 6px rgba(200, 180, 140, 0.3));
     }
 
     /* --- Табы --- */
@@ -216,10 +212,6 @@
       gap: 14px;
     }
 
-    .sale-section h3 span {
-      font-size: 22px;
-    }
-
     .sale-table {
       width: 100%;
       border-collapse: collapse;
@@ -277,7 +269,7 @@
       border-radius: 10px;
     }
 
-    /* --- Правила скупки (в продаже) --- */
+    /* --- Правила скупки --- */
     .buy-rules {
       background: #0f141b;
       border: 1px solid #2a333e;
@@ -329,7 +321,7 @@
   <!-- ИНФОРМАЦИЯ: Лор -->
   <div id="info" class="tab-content active" role="tabpanel">
     <div class="info-lore">
-      <p><strong>Лор группировки “Распад”</strong></p>
+      <p><strong>Лор группировки "Распад"</strong></p>
       <p>Распад — бывшие научные сотрудники мобильного бункера учёных. Группа сформировалась после серии экспериментов, проводимых при поддержке научного центра в ЧЗО. Несколько молодых учёных стали невольными участниками секретных опытов без их согласия.</p>
       <p>Те самые учёные дезертировали и сформировали группировку. Искали сторонников среди сталкеров и среди других формирований. Группа положительно относится к сталкерам. Имеют опытных бойцов и могут составить оппозицию любому вооружённому составу.</p>
     </div>
@@ -347,7 +339,7 @@
     </div>
   </div>
 
-  <!-- ПРОДАЖА: таблицы с картинками -->
+  <!-- ПРОДАЖА -->
   <div id="sale" class="tab-content" role="tabpanel">
 
     <!-- Правила скупки -->
@@ -357,12 +349,15 @@
       <span><strong>📄 Скупка разных элементов</strong></span>
     </div>
 
-    <!-- Таблица: Документы, флешки -->
+    <!-- Документы -->
     <div class="sale-section">
       <h3><span>💾</span> Документы, флешки, носители информации</h3>
       <table class="sale-table">
         <tr><th>Позиция</th><th>Продажа</th></tr>
-        <tr><td><div class="item-name"><span class="item-img">📁</span> Документы / флешки</div></td><td class="price">1 000</td></tr>
+        <tr>
+          <td><div class="item-name"><span class="item-img">📁</span> Документы / флешки</div></td>
+          <td class="price">1 000</td>
+        </tr>
       </table>
     </div>
 
@@ -401,7 +396,7 @@
       </table>
     </div>
 
-    <!-- Заряженные магазины -->
+    <!-- Магазины -->
     <div class="sale-section">
       <h3><span>🔫</span> Заряженные магазины</h3>
       <table class="sale-table">
@@ -457,12 +452,13 @@
         <tr><td><div class="item-name"><span class="item-img">🔪</span> Штык для М4-А1</div></td><td class="price">300</td></tr>
       </table>
     </div>
+
   </div>
 </div>
 
 <script>
   (function() {
-    // --- Переключение вкладок (Информация, Мануал, Продажа) ---
+    // --- Переключение вкладок ---
     const tabs = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.tab-content');
 
@@ -484,7 +480,7 @@
       });
     });
 
-    // --- Мануал: 3 кнопки (Снаряжение, Локации, Мутанты) ---
+    // --- Мануал: 3 кнопки ---
     const manualBtns = document.querySelectorAll('.manual-btn');
     const manualDesc = document.getElementById('manualDesc');
 
