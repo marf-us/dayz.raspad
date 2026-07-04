@@ -32,7 +32,7 @@
       border: 1px solid #2f3a47;
     }
 
-    /* --- ШАПКА --- */
+    /* --- ШАПКА (на всю ширину) --- */
     .header {
       display: flex;
       flex-direction: column;
@@ -40,14 +40,25 @@
       margin-bottom: 24px;
       border-bottom: 1px solid #2a333e;
       padding-bottom: 20px;
+      width: 100%;
     }
 
-    .header-top {
+    .header-banner {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      border: 1px solid #2a333e;
+      background: #0d0f14;
+    }
+
+    .header-bottom {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       width: 100%;
-      gap: 15px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
@@ -69,7 +80,6 @@
       color: #f0eae3;
       text-shadow: 0 0 15px rgba(200, 180, 140, 0.15);
       text-align: center;
-      flex: 1;
     }
 
     .header-title span {
@@ -81,16 +91,6 @@
       color: #b7c7d9;
       border: 1px solid #3f4b59;
       margin-left: 12px;
-    }
-
-    .header-banner {
-      width: 100%;
-      max-height: 100px;
-      object-fit: cover;
-      border-radius: 16px;
-      margin-top: 14px;
-      border: 1px solid #2a333e;
-      background: #0d0f14;
     }
 
     /* --- Табы (без изменений) --- */
@@ -424,7 +424,7 @@
       .header-title { font-size: 26px; }
       .header-title span { font-size: 14px; margin-left: 6px; }
       .header-icon { width: 44px; height: 44px; }
-      .header-banner { max-height: 60px; }
+      .header-banner { max-height: 120px; }
       .tabs { gap: 4px; }
       .tab-btn { padding: 8px 14px; font-size: 14px; }
       .tab-content { padding: 20px 14px; }
@@ -440,23 +440,18 @@
 <body>
 
 <div class="card">
-  <!-- ШАПКА С КАРТИНКАМИ -->
+  <!-- ШАПКА (баннер на всю ширину, под ним логотип + название) -->
   <header class="header">
-    <div class="header-top">
-      <!-- Логотип (левая картинка) -->
-      <img class="header-icon" src="https://i.imgur.com/kVAaCoI.jpeg" alt="Логотип Raspad" />
-      
-      <!-- Название по центру -->
+    <!-- Баннер на всю ширину -->
+    <img class="header-banner" src="https://i.imgur.com/LgE1Rg7.jpeg" alt="Баннер группировки Распад" />
+    
+    <!-- Нижняя часть: логотип и название -->
+    <div class="header-bottom">
+      <img class="header-icon" src="https://i.imgur.com/FPRLXDg.png" alt="Логотип Raspad" />
       <div class="header-title">
         Raspad <span>|| RSPD</span>
       </div>
-      
-      <!-- Пустой блок для баланса (чтобы название было строго по центру) -->
-      <div style="width:60px;"></div>
     </div>
-    
-    <!-- Баннер (нижняя картинка) -->
-    <img class="header-banner" src="https://i.imgur.com/LgE1Rg7.jpeg" alt="Баннер группировки Распад" />
   </header>
 
   <!-- Вкладки -->
