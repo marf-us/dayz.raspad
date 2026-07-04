@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raspad || RSPD</title>
   <style>
-    /* --- Общий стиль (темная эстетика) --- */
+    /* --- Стили (без изменений) --- */
     * {
       margin: 0;
       padding: 0;
@@ -32,46 +32,67 @@
       border: 1px solid #2f3a47;
     }
 
-    /* --- Заголовок --- */
+    /* --- НОВАЯ ШАПКА --- */
     .header {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #2a333e;
+      padding-bottom: 20px;
     }
 
-    .header h1 {
-      font-size: 32px;
-      font-weight: 300;
-      letter-spacing: 2px;
-      color: #f0eae3;
-      text-shadow: 0 0 12px rgba(200, 180, 140, 0.2);
+    .header-top {
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
+      width: 100%;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
-    .header h1 span {
+    .header-icon {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(200, 180, 140, 0.15));
+    }
+
+    .header-title {
+      font-size: 34px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: #f0eae3;
+      text-shadow: 0 0 15px rgba(200, 180, 140, 0.15);
+      text-align: center;
+      flex: 1;
+    }
+
+    .header-title span {
       background: #2d3740;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 400;
-      padding: 4px 18px;
+      padding: 4px 20px;
       border-radius: 40px;
       color: #b7c7d9;
       border: 1px solid #3f4b59;
+      margin-left: 12px;
     }
 
-    .header h1 .emoji-gun {
-      font-size: 28px;
+    .header-banner {
+      width: 100%;
+      max-height: 80px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-top: 12px;
+      border: 1px solid #2a333e;
     }
 
-    /* --- Табы --- */
+    /* --- Табы (без изменений) --- */
     .tabs {
       display: flex;
       gap: 6px;
-      margin: 18px 0 28px;
+      margin: 10px 0 28px;
       border-bottom: 1px solid #2a333e;
       padding-bottom: 2px;
       flex-wrap: wrap;
@@ -194,7 +215,7 @@
       font-weight: 400;
     }
 
-    /* --- Продажа: таблицы --- */
+    /* --- Продажа: таблицы и калькулятор --- */
     .sale-section {
       margin-bottom: 32px;
     }
@@ -288,10 +309,117 @@
       font-weight: 400;
     }
 
+    /* --- КАЛЬКУЛЯТОР (возвращен) --- */
+    .calc-box {
+      background: #0f141b;
+      border-radius: 24px;
+      padding: 20px 20px 10px;
+      margin: 20px 0 30px;
+      border: 1px solid #2a333e;
+    }
+
+    .calc-field {
+      margin-bottom: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px 20px;
+    }
+
+    .calc-field label {
+      color: #b7c7d9;
+      font-weight: 400;
+      min-width: 120px;
+      letter-spacing: 0.3px;
+    }
+
+    .calc-field input {
+      flex: 1;
+      min-width: 160px;
+      background: #0b0f14;
+      border: 1px solid #2f3a47;
+      border-radius: 60px;
+      padding: 14px 20px;
+      font-size: 16px;
+      color: #f0eae3;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .calc-field input:focus {
+      border-color: #b7a48b;
+      box-shadow: 0 0 0 3px rgba(183, 164, 139, 0.15);
+      background: #10161e;
+    }
+
+    .calc-field input::placeholder {
+      color: #4d5c6e;
+      font-weight: 300;
+    }
+
+    .calc-field input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .calc-result {
+      background: #0d121a;
+      border: 1px solid #2a333e;
+      border-radius: 60px;
+      padding: 18px 26px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 18px 0 12px;
+    }
+
+    .calc-result .label {
+      color: #9aabbf;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    .calc-result .total {
+      font-size: 32px;
+      font-weight: 300;
+      color: #f0eae3;
+      background: #1a222b;
+      padding: 4px 28px;
+      border-radius: 60px;
+      border: 1px solid #3f4b59;
+      letter-spacing: 1px;
+    }
+
+    .calc-hint {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 30px;
+      margin-top: 12px;
+      padding-top: 14px;
+      border-top: 1px solid #232b34;
+      font-size: 14px;
+      color: #8b9db0;
+    }
+
+    .calc-hint span {
+      background: #131b23;
+      padding: 4px 18px;
+      border-radius: 40px;
+      border: 1px solid #28323d;
+    }
+
+    .calc-hint strong {
+      color: #d6c9bc;
+      font-weight: 400;
+    }
+
     /* --- адаптив --- */
     @media (max-width: 640px) {
       .card { padding: 20px 16px; }
-      .header h1 { font-size: 26px; flex-wrap: wrap; }
+      .header-title { font-size: 26px; }
+      .header-title span { font-size: 14px; margin-left: 6px; }
+      .header-icon { width: 36px; height: 36px; }
+      .header-banner { max-height: 50px; }
       .tabs { gap: 4px; }
       .tab-btn { padding: 8px 14px; font-size: 14px; }
       .tab-content { padding: 20px 14px; }
@@ -299,17 +427,26 @@
       .sale-table .item-img { width: 30px; height: 30px; font-size: 16px; }
       .buy-rules { flex-direction: column; gap: 6px; }
       .manual-btn { max-width: 100%; }
+      .calc-result { flex-direction: column; align-items: stretch; gap: 14px; }
+      .calc-result .total { text-align: center; }
     }
   </style>
 </head>
 <body>
 
 <div class="card">
-  <div class="header">
-    <h1>
-      <span class="emoji-gun">🔫</span> Raspad <span>|| RSPD</span>
-    </h1>
-  </div>
+  <!-- НОВАЯ ШАПКА -->
+  <header class="header">
+    <div class="header-top">
+      <img class="header-icon" src="https://imgur.com/a/9WY0H14" alt="Эмблема" />
+      <div class="header-title">
+        Raspad <span>|| RSPD</span>
+      </div>
+      <!-- Здесь можно добавить иконку справа, если нужно -->
+      <div style="width:50px;"></div> <!-- для баланса -->
+    </div>
+    <img class="header-banner" src="https://imgur.com/a/32sTotV" alt="Баннер группировки" />
+  </header>
 
   <!-- Вкладки -->
   <div class="tabs" role="tablist">
@@ -318,7 +455,7 @@
     <button class="tab-btn" data-tab="sale" role="tab">💰 Продажа</button>
   </div>
 
-  <!-- ИНФОРМАЦИЯ: Лор -->
+  <!-- ИНФОРМАЦИЯ -->
   <div id="info" class="tab-content active" role="tabpanel">
     <div class="info-lore">
       <p><strong>Лор группировки "Распад"</strong></p>
@@ -327,7 +464,7 @@
     </div>
   </div>
 
-  <!-- МАНУАЛ: 3 кнопки -->
+  <!-- МАНУАЛ -->
   <div id="manual" class="tab-content" role="tabpanel">
     <div class="manual-grid">
       <button class="manual-btn" data-manual="equip">⚙️ Снаряжение</button>
@@ -339,8 +476,32 @@
     </div>
   </div>
 
-  <!-- ПРОДАЖА -->
+  <!-- ПРОДАЖА + КАЛЬКУЛЯТОР -->
   <div id="sale" class="tab-content" role="tabpanel">
+
+    <!-- КАЛЬКУЛЯТОР (возвращен) -->
+    <div class="calc-box">
+      <div class="calc-field">
+        <label for="amount">💰 Сумма (₽)</label>
+        <input type="number" id="amount" value="1000" min="0" step="100" placeholder="Введите сумму" />
+      </div>
+
+      <div class="calc-field">
+        <label for="discount">🎯 Скидка (%)</label>
+        <input type="number" id="discount" value="10" min="0" max="100" step="1" placeholder="0–100" />
+      </div>
+
+      <div class="calc-result">
+        <span class="label">💎 Итоговая стоимость</span>
+        <span class="total" id="totalPrice">900 ₽</span>
+      </div>
+
+      <div class="calc-hint">
+        <span>📊 Скидка: <strong id="discountDisplay">10</strong>%</span>
+        <span>🧾 Без скидки: <strong id="subtotalDisplay">1000</strong> ₽</span>
+        <span>💡 Сэкономлено: <strong id="savedDisplay">100</strong> ₽</span>
+      </div>
+    </div>
 
     <!-- Правила скупки -->
     <div class="buy-rules">
@@ -349,19 +510,15 @@
       <span><strong>📄 Скупка разных элементов</strong></span>
     </div>
 
-    <!-- Документы -->
+    <!-- Таблицы с товарами (без изменений) -->
     <div class="sale-section">
       <h3><span>💾</span> Документы, флешки, носители информации</h3>
       <table class="sale-table">
         <tr><th>Позиция</th><th>Продажа</th></tr>
-        <tr>
-          <td><div class="item-name"><span class="item-img">📁</span> Документы / флешки</div></td>
-          <td class="price">1 000</td>
-        </tr>
+        <tr><td><div class="item-name"><span class="item-img">📁</span> Документы / флешки</div></td><td class="price">1 000</td></tr>
       </table>
     </div>
 
-    <!-- Артефакты -->
     <div class="sale-section">
       <h3><span>🔮</span> Отдельно Артефакты</h3>
       <table class="sale-table">
@@ -376,7 +533,6 @@
       </table>
     </div>
 
-    <!-- Противогазы -->
     <div class="sale-section">
       <h3><span>🎭</span> Отдельно противогазы</h3>
       <table class="sale-table">
@@ -396,7 +552,6 @@
       </table>
     </div>
 
-    <!-- Магазины -->
     <div class="sale-section">
       <h3><span>🔫</span> Заряженные магазины</h3>
       <table class="sale-table">
@@ -416,7 +571,6 @@
       </table>
     </div>
 
-    <!-- Медицина -->
     <div class="sale-section">
       <h3><span>💊</span> Медицина</h3>
       <table class="sale-table">
@@ -436,7 +590,6 @@
       </table>
     </div>
 
-    <!-- Оружие -->
     <div class="sale-section">
       <h3><span>🔫</span> Оружие</h3>
       <table class="sale-table">
@@ -512,6 +665,54 @@
         manualDesc.innerHTML = manualData[firstKey];
       }
     }
+
+    // --- КАЛЬКУЛЯТОР (работает как в прошлой версии) ---
+    const amountInput = document.getElementById('amount');
+    const discountInput = document.getElementById('discount');
+    const totalSpan = document.getElementById('totalPrice');
+    const discountDisplaySpan = document.getElementById('discountDisplay');
+    const subtotalDisplaySpan = document.getElementById('subtotalDisplay');
+    const savedDisplaySpan = document.getElementById('savedDisplay');
+
+    function updateCalculator() {
+      let amount = parseFloat(amountInput.value);
+      if (isNaN(amount) || amount < 0) amount = 0;
+      amountInput.value = amount;
+
+      let discount = parseFloat(discountInput.value);
+      if (isNaN(discount) || discount < 0) discount = 0;
+      if (discount > 100) discount = 100;
+      discountInput.value = discount;
+
+      const discountMultiplier = 1 - discount / 100;
+      let total = amount * discountMultiplier;
+      total = Math.round(total * 100) / 100;
+
+      const saved = amount - total;
+
+      totalSpan.textContent = total.toFixed(2) + ' ₽';
+      discountDisplaySpan.textContent = discount;
+      subtotalDisplaySpan.textContent = amount.toFixed(2);
+      savedDisplaySpan.textContent = saved.toFixed(2);
+    }
+
+    amountInput.addEventListener('input', updateCalculator);
+    discountInput.addEventListener('input', updateCalculator);
+
+    amountInput.addEventListener('blur', function() {
+      let val = parseFloat(this.value);
+      if (isNaN(val) || val < 0) this.value = 0;
+      updateCalculator();
+    });
+
+    discountInput.addEventListener('blur', function() {
+      let val = parseFloat(this.value);
+      if (isNaN(val) || val < 0) this.value = 0;
+      if (val > 100) this.value = 100;
+      updateCalculator();
+    });
+
+    updateCalculator();
   })();
 </script>
 
