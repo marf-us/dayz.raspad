@@ -32,7 +32,7 @@
       border: 1px solid #2f3a47;
     }
 
-    /* --- НОВАЯ ШАПКА --- */
+    /* --- ШАПКА --- */
     .header {
       display: flex;
       flex-direction: column;
@@ -52,10 +52,14 @@
     }
 
     .header-icon {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       object-fit: contain;
-      filter: drop-shadow(0 0 8px rgba(200, 180, 140, 0.15));
+      border-radius: 12px;
+      border: 1px solid #2f3a47;
+      background: #0d0f14;
+      padding: 4px;
+      filter: drop-shadow(0 0 8px rgba(200, 180, 140, 0.1));
     }
 
     .header-title {
@@ -81,11 +85,12 @@
 
     .header-banner {
       width: 100%;
-      max-height: 80px;
+      max-height: 100px;
       object-fit: cover;
       border-radius: 16px;
-      margin-top: 12px;
+      margin-top: 14px;
       border: 1px solid #2a333e;
+      background: #0d0f14;
     }
 
     /* --- Табы (без изменений) --- */
@@ -309,7 +314,7 @@
       font-weight: 400;
     }
 
-    /* --- КАЛЬКУЛЯТОР (возвращен) --- */
+    /* --- КАЛЬКУЛЯТОР --- */
     .calc-box {
       background: #0f141b;
       border-radius: 24px;
@@ -418,8 +423,8 @@
       .card { padding: 20px 16px; }
       .header-title { font-size: 26px; }
       .header-title span { font-size: 14px; margin-left: 6px; }
-      .header-icon { width: 36px; height: 36px; }
-      .header-banner { max-height: 50px; }
+      .header-icon { width: 44px; height: 44px; }
+      .header-banner { max-height: 60px; }
       .tabs { gap: 4px; }
       .tab-btn { padding: 8px 14px; font-size: 14px; }
       .tab-content { padding: 20px 14px; }
@@ -435,17 +440,23 @@
 <body>
 
 <div class="card">
-  <!-- НОВАЯ ШАПКА -->
+  <!-- ШАПКА С КАРТИНКАМИ -->
   <header class="header">
     <div class="header-top">
-      <img class="header-icon" src="https://imgur.com/a/9WY0H14" alt="Эмблема" />
+      <!-- Логотип (левая картинка) -->
+      <img class="header-icon" src="https://i.imgur.com/kVAaCoI.jpeg" alt="Логотип Raspad" />
+      
+      <!-- Название по центру -->
       <div class="header-title">
         Raspad <span>|| RSPD</span>
       </div>
-      <!-- Здесь можно добавить иконку справа, если нужно -->
-      <div style="width:50px;"></div> <!-- для баланса -->
+      
+      <!-- Пустой блок для баланса (чтобы название было строго по центру) -->
+      <div style="width:60px;"></div>
     </div>
-    <img class="header-banner" src="https://imgur.com/a/32sTotV" alt="Баннер группировки" />
+    
+    <!-- Баннер (нижняя картинка) -->
+    <img class="header-banner" src="https://i.imgur.com/LgE1Rg7.jpeg" alt="Баннер группировки Распад" />
   </header>
 
   <!-- Вкладки -->
@@ -479,7 +490,7 @@
   <!-- ПРОДАЖА + КАЛЬКУЛЯТОР -->
   <div id="sale" class="tab-content" role="tabpanel">
 
-    <!-- КАЛЬКУЛЯТОР (возвращен) -->
+    <!-- КАЛЬКУЛЯТОР -->
     <div class="calc-box">
       <div class="calc-field">
         <label for="amount">💰 Сумма (₽)</label>
@@ -510,7 +521,7 @@
       <span><strong>📄 Скупка разных элементов</strong></span>
     </div>
 
-    <!-- Таблицы с товарами (без изменений) -->
+    <!-- Таблицы с товарами -->
     <div class="sale-section">
       <h3><span>💾</span> Документы, флешки, носители информации</h3>
       <table class="sale-table">
@@ -666,7 +677,7 @@
       }
     }
 
-    // --- КАЛЬКУЛЯТОР (работает как в прошлой версии) ---
+    // --- КАЛЬКУЛЯТОР ---
     const amountInput = document.getElementById('amount');
     const discountInput = document.getElementById('discount');
     const totalSpan = document.getElementById('totalPrice');
