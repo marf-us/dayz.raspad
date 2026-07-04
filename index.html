@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LightBreath — Стиль и калькулятор</title>
+  <title>Raspad || RSPD</title>
   <style>
-    /* --- Стиль, вдохновленный lightbreath (темная эстетика) --- */
+    /* --- Общий стиль (темная эстетика, как в LightBreath) --- */
     * {
       margin: 0;
       padding: 0;
@@ -18,12 +18,12 @@
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       padding: 30px 20px;
     }
 
     .card {
-      max-width: 820px;
+      max-width: 1000px;
       width: 100%;
       background: #161b22;
       border-radius: 40px;
@@ -31,6 +31,7 @@
       padding: 32px 30px 40px;
       transition: 0.2s;
       border: 1px solid #2f3a47;
+      margin: 0 auto;
     }
 
     /* --- Заголовок --- */
@@ -44,11 +45,11 @@
     }
 
     .header h1 {
-      font-size: 30px;
+      font-size: 32px;
       font-weight: 300;
       letter-spacing: 2px;
       color: #f0eae3;
-      text-shadow: 0 0 12px rgba(255, 215, 150, 0.3);
+      text-shadow: 0 0 12px rgba(200, 180, 140, 0.2);
       display: flex;
       align-items: center;
       gap: 12px;
@@ -63,6 +64,11 @@
       letter-spacing: 0.5px;
       color: #b7c7d9;
       border: 1px solid #3f4b59;
+    }
+
+    .header h1 .emoji-gun {
+      font-size: 28px;
+      filter: drop-shadow(0 0 6px rgba(200, 180, 140, 0.3));
     }
 
     /* --- Табы --- */
@@ -123,201 +129,184 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- Информация (стиль как в примере) --- */
-    .info-grid {
+    /* --- Информация (Лор) --- */
+    .info-lore {
+      color: #c8d4e0;
+      line-height: 1.7;
+      font-size: 15px;
+      max-width: 800px;
+    }
+
+    .info-lore p {
+      margin-bottom: 16px;
+    }
+
+    .info-lore strong {
+      color: #f0eae3;
+      font-weight: 500;
+    }
+
+    /* --- Мануал (3 кнопки) --- */
+    .manual-grid {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin: 10px 0 20px;
     }
 
-    .info-row {
-      display: flex;
-      align-items: baseline;
-      padding: 12px 0;
-      border-bottom: 1px dashed #28323d;
+    .manual-btn {
+      background: #1f2832;
+      border: 1px solid #3a4655;
+      color: #c8d4e0;
+      padding: 14px 34px;
+      border-radius: 60px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+      letter-spacing: 0.5px;
+      flex: 1 0 auto;
+      max-width: 220px;
+      text-align: center;
     }
 
-    .info-row:last-child {
-      border-bottom: none;
+    .manual-btn:hover {
+      background: #2d3740;
+      color: #f0eae3;
+      border-color: #b7a48b;
+      box-shadow: 0 0 16px rgba(183, 164, 139, 0.08);
     }
 
-    .info-label {
-      font-weight: 400;
+    .manual-btn.active {
+      background: #f0eae3;
+      color: #0d0f14;
+      border-color: #f0eae3;
+    }
+
+    .manual-desc {
       color: #9aabbf;
-      width: 140px;
-      flex-shrink: 0;
+      text-align: center;
+      padding: 20px 10px 8px;
+      font-size: 15px;
+      border-top: 1px solid #232b34;
+      margin-top: 12px;
+    }
+
+    .manual-desc strong {
+      color: #f0eae3;
+      font-weight: 400;
+    }
+
+    /* --- Продажа: таблицы --- */
+    .sale-section {
+      margin-bottom: 32px;
+    }
+
+    .sale-section h3 {
+      color: #d6c9bc;
+      font-weight: 300;
+      letter-spacing: 1px;
+      font-size: 20px;
+      border-bottom: 1px solid #2a333e;
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sale-section h3 span {
+      font-size: 22px;
+    }
+
+    .sale-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .sale-table th {
+      text-align: left;
+      color: #9aabbf;
+      font-weight: 400;
+      padding: 10px 8px 8px 0;
+      border-bottom: 1px solid #28323d;
       letter-spacing: 0.3px;
     }
 
-    .info-value {
-      color: #e8e0d8;
-      font-weight: 300;
+    .sale-table td {
+      padding: 10px 8px 10px 0;
+      border-bottom: 1px solid #1f2832;
+      color: #c8d4e0;
     }
 
-    .badge {
-      background: #28323d;
-      color: #cbdae6;
-      padding: 2px 16px;
-      border-radius: 40px;
-      font-size: 13px;
-      border: 1px solid #3f4b59;
-    }
-
-    /* --- Мануал новичка (минимализм) --- */
-    .manual-step {
-      display: flex;
-      gap: 18px;
-      padding: 14px 0;
-      border-bottom: 1px solid #232b34;
-    }
-
-    .manual-step:last-child {
+    .sale-table tr:last-child td {
       border-bottom: none;
     }
 
-    .step-num {
-      background: #232b34;
-      color: #d6c9bc;
-      width: 34px;
-      height: 34px;
-      border-radius: 60px;
+    .sale-table .price {
+      color: #e8e0d8;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .sale-table .item-name {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sale-table .item-img {
+      width: 36px;
+      height: 36px;
+      background: #1f2832;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 500;
-      flex-shrink: 0;
-      border: 1px solid #3a4655;
-      font-size: 15px;
-    }
-
-    .step-text {
-      color: #c8d4e0;
-      line-height: 1.5;
-    }
-
-    .step-text strong {
-      color: #f0eae3;
-      font-weight: 500;
-    }
-
-    /* --- КАЛЬКУЛЯТОР (Продажа) --- */
-    .calc-box {
-      background: #0f141b;
-      border-radius: 24px;
-      padding: 8px 6px 10px;
-    }
-
-    .calc-field {
-      margin-bottom: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 16px 20px;
-    }
-
-    .calc-field label {
-      color: #b7c7d9;
-      font-weight: 400;
-      min-width: 120px;
-      letter-spacing: 0.3px;
-    }
-
-    .calc-field input {
-      flex: 1;
-      min-width: 160px;
-      background: #0b0f14;
+      font-size: 20px;
       border: 1px solid #2f3a47;
-      border-radius: 60px;
-      padding: 14px 20px;
-      font-size: 16px;
-      color: #f0eae3;
-      outline: none;
-      transition: 0.2s;
+      flex-shrink: 0;
     }
 
-    .calc-field input:focus {
-      border-color: #b7a48b;
-      box-shadow: 0 0 0 3px rgba(183, 164, 139, 0.15);
-      background: #10161e;
+    .sale-table .item-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
-    .calc-field input::placeholder {
-      color: #4d5c6e;
-      font-weight: 300;
-    }
-
-    .calc-field input[type="number"] {
-      -moz-appearance: textfield;
-    }
-
-    .calc-field input[type="number"]::-webkit-inner-spin-button {
-      opacity: 0.5;
-    }
-
-    /* итоговый блок */
-    .calc-result {
-      background: #0d121a;
+    /* --- Правила скупки (в продаже) --- */
+    .buy-rules {
+      background: #0f141b;
       border: 1px solid #2a333e;
-      border-radius: 60px;
-      padding: 18px 26px;
+      border-radius: 20px;
+      padding: 18px 24px;
+      margin-bottom: 30px;
+      color: #b7c7d9;
+      font-size: 15px;
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      margin: 28px 0 16px;
+      gap: 16px 40px;
     }
 
-    .calc-result .label {
-      color: #9aabbf;
-      font-weight: 400;
-      letter-spacing: 0.3px;
-    }
-
-    .calc-result .total {
-      font-size: 32px;
-      font-weight: 300;
+    .buy-rules strong {
       color: #f0eae3;
-      background: #1a222b;
-      padding: 4px 28px;
-      border-radius: 60px;
-      border: 1px solid #3f4b59;
-      letter-spacing: 1px;
-    }
-
-    .calc-hint {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px 30px;
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid #232b34;
-      font-size: 14px;
-      color: #8b9db0;
-    }
-
-    .calc-hint span {
-      background: #131b23;
-      padding: 4px 18px;
-      border-radius: 40px;
-      border: 1px solid #28323d;
-    }
-
-    .calc-hint strong {
-      color: #d6c9bc;
       font-weight: 400;
     }
 
     /* --- адаптив --- */
     @media (max-width: 640px) {
       .card { padding: 20px 16px; }
-      .header h1 { font-size: 24px; flex-wrap: wrap; }
+      .header h1 { font-size: 26px; flex-wrap: wrap; }
       .tabs { gap: 4px; }
       .tab-btn { padding: 8px 14px; font-size: 14px; }
       .tab-content { padding: 20px 14px; }
-      .info-label { width: 100px; }
-      .calc-field label { min-width: 90px; }
-      .calc-result { flex-direction: column; align-items: stretch; gap: 14px; }
-      .calc-result .total { text-align: center; }
+      .sale-table { font-size: 13px; }
+      .sale-table .item-img { width: 30px; height: 30px; font-size: 16px; }
+      .buy-rules { flex-direction: column; gap: 6px; }
+      .manual-btn { max-width: 100%; }
     }
   </style>
 </head>
@@ -326,8 +315,7 @@
 <div class="card">
   <div class="header">
     <h1>
-      ⚔️ LightBreath
-      <span>стиль</span>
+      <span class="emoji-gun">🔫</span> Raspad <span>|| RSPD</span>
     </h1>
   </div>
 
@@ -338,71 +326,143 @@
     <button class="tab-btn" data-tab="sale" role="tab">💰 Продажа</button>
   </div>
 
-  <!-- Информация -->
+  <!-- ИНФОРМАЦИЯ: Лор -->
   <div id="info" class="tab-content active" role="tabpanel">
-    <div class="info-grid">
-      <div class="info-row"><span class="info-label">Название</span><span class="info-value">LightBreath / Дыхание Света</span></div>
-      <div class="info-row"><span class="info-label">Версия</span><span class="info-value">2.0 <span class="badge">стабильная</span></span></div>
-      <div class="info-row"><span class="info-label">Автор</span><span class="info-value">Lin Homura</span></div>
-      <div class="info-row"><span class="info-label">Репозиторий</span><span class="info-value"><a href="#" style="color:#b7a48b; text-decoration:none; border-bottom:1px dotted #4d5c6e;">github.com/lightbreath/repo</a></span></div>
-      <div class="info-row"><span class="info-label">Описание</span><span class="info-value">Стиль, вдохновленный дыханием света. Калькулятор скидок.</span></div>
+    <div class="info-lore">
+      <p><strong>Лор группировки “Распад”</strong></p>
+      <p>Распад — бывшие научные сотрудники мобильного бункера учёных. Группа сформировалась после серии экспериментов, проводимых при поддержке научного центра в ЧЗО. Несколько молодых учёных стали невольными участниками секретных опытов без их согласия.</p>
+      <p>Те самые учёные дезертировали и сформировали группировку. Искали сторонников среди сталкеров и среди других формирований. Группа положительно относится к сталкерам. Имеют опытных бойцов и могут составить оппозицию любому вооружённому составу.</p>
     </div>
   </div>
 
-  <!-- Мануал новичка -->
+  <!-- МАНУАЛ: 3 кнопки -->
   <div id="manual" class="tab-content" role="tabpanel">
-    <div class="manual-step">
-      <div class="step-num">1</div>
-      <div class="step-text"><strong>Изучите интерфейс</strong> — переключайте вкладки для навигации по разделам.</div>
+    <div class="manual-grid">
+      <button class="manual-btn" data-manual="equip">⚙️ Снаряжение</button>
+      <button class="manual-btn" data-manual="locations">📍 Локации</button>
+      <button class="manual-btn" data-manual="mutants">👾 Мутанты</button>
     </div>
-    <div class="manual-step">
-      <div class="step-num">2</div>
-      <div class="step-text"><strong>Перейдите во вкладку «Продажа»</strong> — здесь находится калькулятор для расчёта стоимости со скидкой.</div>
-    </div>
-    <div class="manual-step">
-      <div class="step-num">3</div>
-      <div class="step-text"><strong>Введите сумму</strong> (например, стоимость товара) и укажите скидку в процентах.</div>
-    </div>
-    <div class="manual-step">
-      <div class="step-num">4</div>
-      <div class="step-text"><strong>Итоговая сумма</strong> отобразится автоматически с учётом введённой скидки.</div>
-    </div>
-    <div class="manual-step">
-      <div class="step-num">5</div>
-      <div class="step-text"><strong>Готово!</strong> Вы можете адаптировать этот код под свои задачи. Удачи!</div>
+    <div class="manual-desc" id="manualDesc">
+      Нажмите на кнопку, чтобы увидеть информацию.
     </div>
   </div>
 
-  <!-- Продажа + калькулятор (только сумма и скидка) -->
+  <!-- ПРОДАЖА: таблицы с картинками -->
   <div id="sale" class="tab-content" role="tabpanel">
-    <div class="calc-box">
-      <div class="calc-field">
-        <label for="amount">💰 Сумма (₽)</label>
-        <input type="number" id="amount" value="1000" min="0" step="100" placeholder="Введите сумму" />
-      </div>
 
-      <div class="calc-field">
-        <label for="discount">🎯 Скидка (%)</label>
-        <input type="number" id="discount" value="10" min="0" max="100" step="1" placeholder="0–100" />
-      </div>
+    <!-- Правила скупки -->
+    <div class="buy-rules">
+      <span><strong>📦 Формат скупки артефактов и хлама:</strong> 30% нам — 70% отдаём</span>
+      <span><strong>🧬 Мутанина:</strong> 30% нам — 70% отдаём</span>
+      <span><strong>📄 Скупка разных элементов</strong></span>
+    </div>
 
-      <div class="calc-result">
-        <span class="label">💎 Итоговая стоимость</span>
-        <span class="total" id="totalPrice">900 ₽</span>
-      </div>
+    <!-- Таблица: Документы, флешки -->
+    <div class="sale-section">
+      <h3><span>💾</span> Документы, флешки, носители информации</h3>
+      <table class="sale-table">
+        <tr><th>Позиция</th><th>Продажа</th></tr>
+        <tr><td><div class="item-name"><span class="item-img">📁</span> Документы / флешки</div></td><td class="price">1 000</td></tr>
+      </table>
+    </div>
 
-      <div class="calc-hint">
-        <span>📊 Скидка: <strong id="discountDisplay">10</strong>%</span>
-        <span>🧾 Без скидки: <strong id="subtotalDisplay">1000</strong> ₽</span>
-        <span>💡 Сэкономлено: <strong id="savedDisplay">100</strong> ₽</span>
-      </div>
+    <!-- Артефакты -->
+    <div class="sale-section">
+      <h3><span>🔮</span> Отдельно Артефакты</h3>
+      <table class="sale-table">
+        <tr><th>Позиция</th><th>Продажа</th></tr>
+        <tr><td><div class="item-name"><span class="item-img">🧿</span> Контейнер на 1 арт / ПКА-1</div></td><td class="price">6.500</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🧿</span> Контейнер на 2 арта / ПКА-9</div></td><td class="price">12.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🐻</span> Медведь</div></td><td class="price">30.000 + батарейка</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📡</span> Отклик</div></td><td class="price">10.000 + батарейка</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💎</span> Источник</div></td><td class="price">1.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📟</span> Дозиметр ДГБ-60М</div></td><td class="price">300</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔋</span> Батарея 9 В</div></td><td class="price">50</td></tr>
+      </table>
+    </div>
+
+    <!-- Противогазы -->
+    <div class="sale-section">
+      <h3><span>🎭</span> Отдельно противогазы</h3>
+      <table class="sale-table">
+        <tr><th>Позиция</th><th>Продажа</th></tr>
+        <tr><td><div class="item-name"><span class="item-img">🎭</span> Экспонента</div></td><td class="price">45.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🎭</span> ХМ40 / XM40</div></td><td class="price">40.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🎭</span> М17</div></td><td class="price">15.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🧪</span> Фильтр XM-40</div></td><td class="price">4.500</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🧪</span> Фильтр Н5</div></td><td class="price">1.500</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🎭</span> Противогаз ШМС-Л3</div></td><td class="price">6.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🎭</span> Противогаз ГП-10</div></td><td class="price">10.400</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🎭</span> Противогаз ГП-4У</div></td><td class="price">4.550</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🎭</span> Противогаз Слон</div></td><td class="price">2.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🧪</span> Обычный фильтр противогаза</div></td><td class="price">130</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🧪</span> Фильтр ППН-20</div></td><td class="price">800</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🧪</span> Фильтр ПП-10</div></td><td class="price">1.500</td></tr>
+      </table>
+    </div>
+
+    <!-- Заряженные магазины -->
+    <div class="sale-section">
+      <h3><span>🔫</span> Заряженные магазины</h3>
+      <table class="sale-table">
+        <tr><th>Позиция</th><th>Продажа</th></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин KelTec SUB 2000, 50 пат. 9×19</div></td><td class="price">2.200</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин USG-45, 25 пат. .45 ACP</div></td><td class="price">400</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Стандартный магазин 5,56×45, 30 пат.</div></td><td class="price">800</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин RAK-37, 25 пат. .380 ACP</div></td><td class="price">350</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин ИЖ-70, 12 пат. .380 ACP</div></td><td class="price">250</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин CR-527, 5 пат. 7,62×39</div></td><td class="price">700</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин CR-527, второй вариант</div></td><td class="price">450</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин П12 / Монолит</div></td><td class="price">2.500</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин Токарева</div></td><td class="price">300</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин Colt 1911</div></td><td class="price">250</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин Макарова</div></td><td class="price">300</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">📦</span> Магазин Beretta M9</div></td><td class="price">300</td></tr>
+      </table>
+    </div>
+
+    <!-- Медицина -->
+    <div class="sale-section">
+      <h3><span>💊</span> Медицина</h3>
+      <table class="sale-table">
+        <tr><th>Позиция</th><th>Продажа</th></tr>
+        <tr><td><div class="item-name"><span class="item-img">🩹</span> Бинт</div></td><td class="price">200</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💉</span> Адрик / адреналин</div></td><td class="price">7.500</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🧪</span> Настойка йода</div></td><td class="price">600</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💊</span> Аминазин</div></td><td class="price">11.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💊</span> Цистамин</div></td><td class="price">3.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💊</span> Кодеин</div></td><td class="price">600</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🧪</span> Физраствор</div></td><td class="price">500</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💊</span> АИ-2 армейская / синяя</div></td><td class="price">2.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💊</span> АИ-2 простая / красная</div></td><td class="price">1.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💊</span> Тетрациклин</div></td><td class="price">600</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💊</span> АИ-2 научная / жёлтая</div></td><td class="price">3.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">💊</span> Мультивитамины</div></td><td class="price">500</td></tr>
+      </table>
+    </div>
+
+    <!-- Оружие -->
+    <div class="sale-section">
+      <h3><span>🔫</span> Оружие</h3>
+      <table class="sale-table">
+        <tr><th>Позиция</th><th>Продажа</th></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔫</span> Мосина</div></td><td class="price">40.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔫</span> AUR AX</div></td><td class="price">35.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔫</span> LR300</div></td><td class="price">40.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔫</span> M590A1</div></td><td class="price">8.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔫</span> Beretta M9</div></td><td class="price">650</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔫</span> USG-45</div></td><td class="price">2.600</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔫</span> RAK-37</div></td><td class="price">2.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔫</span> KelTec SUB 2000</div></td><td class="price">12.000</td></tr>
+        <tr><td><div class="item-name"><span class="item-img">🔪</span> Штык для М4-А1</div></td><td class="price">300</td></tr>
+      </table>
     </div>
   </div>
 </div>
 
 <script>
   (function() {
-    // --- Переключение вкладок (без изменений) ---
+    // --- Переключение вкладок (Информация, Мануал, Продажа) ---
     const tabs = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.tab-content');
 
@@ -424,60 +484,38 @@
       });
     });
 
-    // --- НОВЫЙ КАЛЬКУЛЯТОР: только сумма + скидка ---
-    const amountInput = document.getElementById('amount');
-    const discountInput = document.getElementById('discount');
-    const totalSpan = document.getElementById('totalPrice');
-    const discountDisplaySpan = document.getElementById('discountDisplay');
-    const subtotalDisplaySpan = document.getElementById('subtotalDisplay');
-    const savedDisplaySpan = document.getElementById('savedDisplay');
+    // --- Мануал: 3 кнопки (Снаряжение, Локации, Мутанты) ---
+    const manualBtns = document.querySelectorAll('.manual-btn');
+    const manualDesc = document.getElementById('manualDesc');
 
-    function updateCalculator() {
-      // Сумма
-      let amount = parseFloat(amountInput.value);
-      if (isNaN(amount) || amount < 0) amount = 0;
-      amountInput.value = amount; // корректируем
+    const manualData = {
+      equip: '⚙️ <strong>Снаряжение</strong>: Здесь вы найдёте информацию о доступной экипировке, броне и специальных инструментах для выживания в Зоне.',
+      locations: '📍 <strong>Локации</strong>: Описание ключевых точек на карте, аномальных зон и безопасных мест для стоянки.',
+      mutants: '👾 <strong>Мутанты</strong>: Сведения о мутантах, обитающих в Зоне, их повадках и способах защиты.'
+    };
 
-      // Скидка
-      let discount = parseFloat(discountInput.value);
-      if (isNaN(discount) || discount < 0) discount = 0;
-      if (discount > 100) discount = 100;
-      discountInput.value = discount;
+    manualBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        manualBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
 
-      // Расчёт
-      const discountMultiplier = 1 - discount / 100;
-      let total = amount * discountMultiplier;
-      total = Math.round(total * 100) / 100; // до 2 знаков
+        const key = this.dataset.manual;
+        if (key && manualData[key]) {
+          manualDesc.innerHTML = manualData[key];
+        } else {
+          manualDesc.innerHTML = 'Информация временно недоступна.';
+        }
+      });
+    });
 
-      const saved = amount - total;
-
-      // Отображение
-      totalSpan.textContent = total.toFixed(2) + ' ₽';
-      discountDisplaySpan.textContent = discount;
-      subtotalDisplaySpan.textContent = amount.toFixed(2);
-      savedDisplaySpan.textContent = saved.toFixed(2);
+    // Активируем первую кнопку по умолчанию
+    if (manualBtns.length > 0) {
+      manualBtns[0].classList.add('active');
+      const firstKey = manualBtns[0].dataset.manual;
+      if (firstKey && manualData[firstKey]) {
+        manualDesc.innerHTML = manualData[firstKey];
+      }
     }
-
-    // События
-    amountInput.addEventListener('input', updateCalculator);
-    discountInput.addEventListener('input', updateCalculator);
-
-    // Дополнительная валидация при потере фокуса
-    amountInput.addEventListener('blur', function() {
-      let val = parseFloat(this.value);
-      if (isNaN(val) || val < 0) this.value = 0;
-      updateCalculator();
-    });
-
-    discountInput.addEventListener('blur', function() {
-      let val = parseFloat(this.value);
-      if (isNaN(val) || val < 0) this.value = 0;
-      if (val > 100) this.value = 100;
-      updateCalculator();
-    });
-
-    // Первоначальный расчёт
-    updateCalculator();
   })();
 </script>
 
