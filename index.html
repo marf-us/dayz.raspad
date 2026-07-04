@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мой сайт — Вкладки и калькулятор</title>
+  <style>
+    /* --- Сброс и базовые стили --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      max-width: 800px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px rgba(0, 20, 40, 0.12);
+      padding: 30px 28px 40px;
+      transition: 0.25s;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #0b1a2e;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h1 small {
+      font-size: 16px;
+      font-weight: 400;
+      color: #5b6f87;
+      margin-left: auto;
+      background: #eef3f9;
+      padding: 4px 14px;
+      border-radius: 40px;
+    }
+
+    /* --- Вкладки (табы) --- */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin: 24px 0 28px;
+      border-bottom: 2px solid #e6edf5;
+      padding-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 22px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #4b5f77;
+      cursor: pointer;
+      border-radius: 40px;
+      transition: 0.2s;
+      letter-spacing: 0.2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover {
+      background: #e9f0f8;
+      color: #0b1a2e;
+    }
+
+    .tab-btn.active {
+      background: #0b1a2e;
+      color: white;
+      box-shadow: 0 6px 12px rgba(11, 26, 46, 0.15);
+    }
+
+    .tab-btn i {
+      font-style: normal;
+      font-size: 18px;
+    }
+
+    /* --- Контент вкладок --- */
+    .tab-content {
+      display: none;
+      animation: fade 0.25s ease;
+      background: #fafcff;
+      padding: 24px 22px;
+      border-radius: 24px;
+      border: 1px solid #eaf0f7;
+      margin-top: 8px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0.4; transform: translateY(6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Информация --- */
+    .info-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px dashed #dce5ef;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: #1d344b;
+      width: 130px;
+      flex-shrink: 0;
+    }
+
+    .info-value {
+      color: #1d3a5c;
+    }
+
+    .badge {
+      background: #dbeafe;
+      color: #1a4b7a;
+      padding: 4px 14px;
+      border-radius: 40px;
+      font-size: 14px;
+    }
+
+    /* --- Мануал новичка --- */
+    .manual-step {
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #e2eaf3;
+    }
+
+    .manual-step:last-child {
+      border-bottom: none;
+    }
+
+    .step-num {
+      background: #0b1a2e;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      flex-shrink: 0;
+      font-size: 15px;
+    }
+
+    .step-text {
+      color: #1f3853;
+      line-height: 1.5;
+    }
+
+    .step-text strong {
+      color: #0b1a2e;
+    }
+
+    /* --- Калькулятор (Продажа) --- */
+    .calc-box {
+      background: white;
+      border-radius: 20px;
+      padding: 8px 4px 4px;
+    }
+
+    .calc-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 16px;
+      margin-bottom: 22px;
+    }
+
+    .calc-row label {
+      font-weight: 500;
+      color: #1d344b;
+      min-width: 110px;
+    }
+
+    .calc-row input,
+    .calc-row select {
+      flex: 1;
+      min-width: 170px;
+      padding: 12px 16px;
+      border: 1.5px solid #d3dfea;
+      border-radius: 60px;
+      font-size: 16px;
+      background: white;
+      transition: 0.2s;
+      outline: none;
+    }
+
+    .calc-row input:focus,
+    .calc-row select:focus {
+      border-color: #0b1a2e;
+      box-shadow: 0 0 0 3px rgba(11, 26, 46, 0.08);
+    }
+
+    .calc-row input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .calc-row input[type="number"]::-webkit-inner-spin-button {
+      opacity: 0.6;
+    }
+
+    .calc-result {
+      background: #eef4fa;
+      padding: 18px 22px;
+      border-radius: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 18px 0 10px;
+    }
+
+    .calc-result span:first-child {
+      font-weight: 500;
+      color: #1d344b;
+    }
+
+    .calc-result .total {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0b1a2e;
+      background: white;
+      padding: 4px 22px;
+      border-radius: 60px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .calc-hint {
+      font-size: 14px;
+      color: #4d6a89;
+      margin-top: 16px;
+      border-top: 1px solid #dee8f2;
+      padding-top: 18px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .calc-hint span {
+      background: #f0f5fc;
+      padding: 4px 16px;
+      border-radius: 30px;
+    }
+
+    /* --- адаптив --- */
+    @media (max-width: 600px) {
+      .card { padding: 20px 16px; }
+      .tabs { gap: 4px; }
+      .tab-btn { padding: 8px 14px; font-size: 14px; }
+      .info-label { width: 100px; }
+      .calc-row label { min-width: 80px; }
+      .calc-result { flex-direction: column; align-items: stretch; gap: 12px; }
+      .calc-result .total { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>
+    📁 Мой сайт
+    <small>GitHub Pages</small>
+  </h1>
+
+  <!-- Вкладки -->
+  <div class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="info" role="tab">📋 Информация</button>
+    <button class="tab-btn" data-tab="manual" role="tab">📖 Мануал новичка</button>
+    <button class="tab-btn" data-tab="sale" role="tab">💰 Продажа</button>
+  </div>
+
+  <!-- Информация -->
+  <div id="info" class="tab-content active" role="tabpanel">
+    <div class="info-grid">
+      <div class="info-item"><span class="info-label">📌 Название</span><span class="info-value">Тестовый проект</span></div>
+      <div class="info-item"><span class="info-label">🕹️ Версия</span><span class="info-value">1.2.0 <span class="badge">стабильная</span></span></div>
+      <div class="info-item"><span class="info-label">👤 Автор</span><span class="info-value">Алексей Д.</span></div>
+      <div class="info-item"><span class="info-label">📅 Дата</span><span class="info-value">Июль 2026</span></div>
+      <div class="info-item"><span class="info-label">🌐 Репозиторий</span><span class="info-value"><a href="#" style="color:#0b1a2e; text-decoration:none; border-bottom:1px dotted;">github.com/your/repo</a></span></div>
+      <div class="info-item"><span class="info-label">📄 Описание</span><span class="info-value">Демонстрация вкладок и встроенного калькулятора для раздела "Продажа".</span></div>
+    </div>
+  </div>
+
+  <!-- Мануал новичка -->
+  <div id="manual" class="tab-content" role="tabpanel">
+    <div class="manual-step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Ознакомьтесь с интерфейсом</strong> — переключайте вкладки, чтобы изучить доступные разделы.</div>
+    </div>
+    <div class="manual-step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Перейдите во вкладку «Продажа»</strong> — там находится калькулятор для расчёта стоимости.</div>
+    </div>
+    <div class="manual-step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Введите количество товара</strong> и выберите тип из выпадающего списка. Цена обновится автоматически.</div>
+    </div>
+    <div class="manual-step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Итоговая сумма</strong> отображается внизу с учётом скидки (если применимо).</div>
+    </div>
+    <div class="manual-step">
+      <div class="step-num">5</div>
+      <div class="step-text"><strong>Готово!</strong> Вы можете адаптировать этот код под свои задачи. Удачи!</div>
+    </div>
+  </div>
+
+  <!-- Продажа + калькулятор -->
+  <div id="sale" class="tab-content" role="tabpanel">
+    <div class="calc-box">
+      <div class="calc-row">
+        <label for="quantity">📦 Количество</label>
+        <input type="number" id="quantity" value="1" min="1" step="1" />
+      </div>
+
+      <div class="calc-row">
+        <label for="productType">🏷️ Тип товара</label>
+        <select id="productType">
+          <option value="basic">Базовый — 100 ₽</option>
+          <option value="standard" selected>Стандарт — 250 ₽</option>
+          <option value="premium">Премиум — 450 ₽</option>
+          <option value="deluxe">Делюкс — 750 ₽</option>
+        </select>
+      </div>
+
+      <div class="calc-row" style="margin-bottom: 8px;">
+        <label for="discount">🎯 Скидка (%)</label>
+        <input type="number" id="discount" value="0" min="0" max="90" step="1" />
+        <span style="font-size:14px; color:#48617e; margin-left:-4px;">%</span>
+      </div>
+
+      <div class="calc-result">
+        <span>💰 Итоговая стоимость</span>
+        <span class="total" id="totalPrice">250 ₽</span>
+      </div>
+
+      <div class="calc-hint">
+        <span>⚡ Цена за ед.: <strong id="pricePerUnit">250</strong> ₽</span>
+        <span>📊 Скидка: <strong id="discountDisplay">0</strong>%</span>
+        <span>🧾 Без скидки: <strong id="subtotalDisplay">250</strong> ₽</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // --- Переключение вкладок ---
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    function activateTab(tabId) {
+      // убираем активные классы
+      tabs.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      // активируем нужную кнопку и контент
+      const activeBtn = Array.from(tabs).find(btn => btn.dataset.tab === tabId);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const activeContent = document.getElementById(tabId);
+      if (activeContent) activeContent.classList.add('active');
+    }
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const tabId = this.dataset.tab;
+        if (tabId) activateTab(tabId);
+      });
+    });
+
+    // --- КАЛЬКУЛЯТОР (раздел Продажа) ---
+    const quantityInput = document.getElementById('quantity');
+    const productSelect = document.getElementById('productType');
+    const discountInput = document.getElementById('discount');
+    const totalSpan = document.getElementById('totalPrice');
+    const pricePerUnitSpan = document.getElementById('pricePerUnit');
+    const discountDisplaySpan = document.getElementById('discountDisplay');
+    const subtotalDisplaySpan = document.getElementById('subtotalDisplay');
+
+    // цены для каждого типа (в ₽)
+    const prices = {
+      basic: 100,
+      standard: 250,
+      premium: 450,
+      deluxe: 750
+    };
+
+    // функция обновления калькулятора
+    function updateCalculator() {
+      // получаем значения
+      let quantity = parseInt(quantityInput.value, 10);
+      if (isNaN(quantity) || quantity < 1) quantity = 1;
+      quantityInput.value = quantity;  // корректируем
+
+      const productType = productSelect.value;
+      const pricePerUnit = prices[productType] || 250;
+
+      let discount = parseInt(discountInput.value, 10);
+      if (isNaN(discount) || discount < 0) discount = 0;
+      if (discount > 90) discount = 90;
+      discountInput.value = discount;
+
+      // расчёт
+      const subtotal = quantity * pricePerUnit;
+      const discountMultiplier = 1 - discount / 100;
+      let total = subtotal * discountMultiplier;
+      // округляем до целых (копейки не используем)
+      total = Math.round(total);
+
+      // обновляем DOM
+      totalSpan.textContent = total + ' ₽';
+      pricePerUnitSpan.textContent = pricePerUnit;
+      discountDisplaySpan.textContent = discount;
+      subtotalDisplaySpan.textContent = subtotal;
+    }
+
+    // событийные слушатели для калькулятора
+    quantityInput.addEventListener('input', updateCalculator);
+    productSelect.addEventListener('change', updateCalculator);
+    discountInput.addEventListener('input', updateCalculator);
+
+    // дополнительно: при потере фокуса корректируем значения
+    quantityInput.addEventListener('blur', function() {
+      let val = parseInt(this.value, 10);
+      if (isNaN(val) || val < 1) this.value = 1;
+      updateCalculator();
+    });
+
+    discountInput.addEventListener('blur', function() {
+      let val = parseInt(this.value, 10);
+      if (isNaN(val) || val < 0) this.value = 0;
+      if (val > 90) this.value = 90;
+      updateCalculator();
+    });
+
+    // первоначальный расчёт
+    updateCalculator();
+  })();
+</script>
+
+</body>
+</html>
